@@ -1,8 +1,13 @@
-const { environment, schema, endpoints } = program;
+const { dependencies, endpoints, environment, imports, schema, expressions, tests } = program;
 
 environment
   .add('CLIENT_ID', 'The API clientID')
   .add('CLIENT_SECRET', 'The API client secret')
+
+tests
+  .add('auth', 'The driver has authenticated correctly with the Calendar API')
+  .add('access', 'The driver can acces the Calendar API and retrieve data')
+  .add('webhooks', 'The driver can receive webhooks from calendar')
 
 endpoints
   .https('auth', 'Visit this endpoint to authorize access to your account', {response: true})

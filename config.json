@@ -1,5 +1,4 @@
 {
- "imports": [],
  "dependencies": [],
  "environment": [
   {
@@ -28,6 +27,7 @@
   }
  ],
  "schema": {
+  "imports": [],
   "types": [
    {
     "name": "Root",
@@ -438,5 +438,19 @@
  },
  "expressions": [],
  "database": [],
+ "tests": [
+  {
+   "name": "auth",
+   "description": "The driver has authenticated correctly with the Calendar API"
+  },
+  {
+   "name": "access",
+   "description": "The driver can acces the Calendar API and retrieve data"
+  },
+  {
+   "name": "webhooks",
+   "description": "The driver can receive webhooks from calendar"
+  }
+ ],
  "isDriver": false
 }

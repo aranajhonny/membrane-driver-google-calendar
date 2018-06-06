@@ -14,6 +14,37 @@ export async function init() {
   console.log('Redirect URL:', program.endpoints.redirect.url);
 }
 
+
+export async function test({ name }) {
+  switch (name) {
+    case 'auth': {
+      if (program.state.tokens) {
+        return true;
+      }
+      break;
+    }
+    case 'access': {
+      if (!program.state.tokens) {
+        return false;
+      }
+
+      try {
+        const response = client.calendarList.list();
+        console.log(response)
+      } catch (e) {
+        return false;
+      }
+
+      break;
+    }
+    case 'webhooks': {
+      // TODO
+      return false;
+    }
+  }
+  return false;
+}
+
 export async function endpoint({ name, req }) {
   switch (name) {
     case 'auth': {
@@ -32,7 +63,7 @@ export const CalendarCollection = {
     return client.calendarList.get({ calendarId: args.id });
   },
   async page({ args }) {
-    return await client.calendarList.list({ ...args });
+    return client.calendarList.list({ ...args });
   },
 };
 
