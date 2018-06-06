@@ -29,8 +29,10 @@ export async function test({ name }) {
       }
 
       try {
-        const response = client.calendarList.list();
-        console.log(response)
+        const response = await client.calendarList.list();
+        if (response.kind) {
+          return true;
+        }
       } catch (e) {
         return false;
       }
